@@ -1,8 +1,10 @@
 import UIKit
 import RxSwift
+import RxRelay
 
 //var greeting = "Hello, playground"
 
+// MARK: - 1-2: Observables
 example(of: "just, of, from") {
 	let one = 1
 	let two = 2
@@ -70,17 +72,17 @@ example(of: "range") {
 	observable
 		.subscribe(
 			onNext: { i in
-			let n = Double(i)
-			
-			let fibonacci = Int(
-				((pow(1.61803, n) - pow(0.61803, n)) / 2.23606).rounded()
-			)
-			
-			print(fibonacci)
-		},
+				let n = Double(i)
+				
+				let fibonacci = Int(
+					((pow(1.61803, n) - pow(0.61803, n)) / 2.23606).rounded()
+				)
+				
+				print(fibonacci)
+			},
 			onCompleted: {
 				print("Completed")
-		})
+			})
 }
 
 example(of: "dispose") {
@@ -196,5 +198,145 @@ example(of: "Single") {
 			}
 		}
 		.disposed(by: disposeBag)
-	
+
 }
+
+// MARK: - 1-3: Subjects
+example(of: "PublishSubject") { // Combine의 Subject
+	let subject = PublishSubject<String>() // ~= PassthroughSubject
+	
+	subject.on(.next("Is anyone listening?")) // Combine의 send(?)
+	
+	let subscriptionOne = subject
+		.subscribe(onNext: { string in // sink(?)
+			print(string)
+		})
+	
+	subject.on(.next("1"))
+	
+	subject.onNext("2")
+	
+	let subscriptionTwo = subject
+		.subscribe { event in
+			print("2)", event.element ?? event)
+		}
+	
+	subject.onNext("3")
+	
+	subscriptionOne.dispose()
+
+	subject.onNext("4")
+	
+	subject.onCompleted()
+	
+	subject.onNext("5")
+	
+	subscriptionTwo.dispose()
+	
+	let disposeBag = DisposeBag()
+	
+	subject
+		.subscribe {
+			print("3)", $0.element ?? $0)
+		}
+		.disposed(by: disposeBag)
+	
+	subject.onNext("?")
+}
+
+enum MyError: Error {
+	case anError
+}
+
+func print<T: CustomStringConvertible>(label: String, event: Event<T>) {
+	print(label, (event.element ?? event.error) ?? event)
+}
+
+example(of: "BehaviorSubject") {
+	let subject = BehaviorSubject(value: "Initial value") // ~= CurrentValueSubject
+	let disposeBag = DisposeBag()
+	
+	subject
+		.subscribe {
+			print(label: "1)", event: $0)
+		}
+		.disposed(by: disposeBag)
+	
+	subject.onNext("X")
+	
+	subject.onError(MyError.anError)
+	
+	subject
+		.subscribe {
+			print(label: "2)", event: $0)
+		}
+		.disposed(by: disposeBag)
+}
+
+example(of: "ReplaySubject") {
+	let subject = ReplaySubject<String>.create(bufferSize: 2)
+	let disposeBag = DisposeBag()
+	
+	subject.onNext("1")
+	subject.onNext("2")
+	subject.onNext("3")
+	
+	subject
+		.subscribe {
+			print(label: "1)", event: $0)
+		}
+		.disposed(by: disposeBag)
+
+	subject
+		.subscribe {
+			print(label: "2)", event: $0)
+		}
+		.disposed(by: disposeBag)
+	
+	subject.onNext("4")
+	
+	subject.onError(MyError.anError)
+	
+	subject.dispose()
+	
+	subject
+		.subscribe {
+			print(label: "3)", event: $0)
+		}
+		.disposed(by: disposeBag)
+}
+
+example(of: "PublishRelay") {
+	let relay = PublishRelay<String>()
+	let disposeBag = DisposeBag()
+	
+	relay.accept("Knock knock, anyone home?")
+	
+	relay.subscribe(onNext: {
+		print($0)
+	}).disposed(by: disposeBag)
+	
+	relay.accept("1")
+}
+
+example(of: "BehaviorRelay") {
+	let relay = BehaviorRelay(value: "Initial value")
+	let disposeBag = DisposeBag()
+	
+	relay.accept("New initial value")
+	
+	relay.subscribe {
+		print(label: "1)", event: $0)
+	}.disposed(by: disposeBag)
+	
+	relay.accept("1")
+	
+	relay.subscribe {
+		print(label: "2)", event: $0)
+	}.disposed(by: disposeBag)
+	
+	relay.accept("2")
+	
+	print(relay.value)
+}
+
