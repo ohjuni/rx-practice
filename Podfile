@@ -9,6 +9,7 @@ target 'RxSwift-Kodeco' do
 
     pod 'RxSwift', '6.5.0'
     pod 'RxCocoa', '6.5.0'
+		pod 'Kingfisher'
 
   target 'RxSwift-KodecoTests' do
     inherit! :search_paths

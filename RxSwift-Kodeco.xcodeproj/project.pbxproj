@@ -11,14 +11,19 @@
 		B3CAC8321031F40F89CD1446 /* Pods_RxSwift_Kodeco_RxSwift_KodecoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6EB6F14014A6EC25A766D8D /* Pods_RxSwift_Kodeco_RxSwift_KodecoUITests.framework */; };
 		C703ECDA296CE3910070456F /* PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703ECD7296CE3910070456F /* PhotoWriter.swift */; };
 		C703ECDC296CE3910070456F /* UIImage+Collage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703ECD9296CE3910070456F /* UIImage+Collage.swift */; };
-		C703ECDE296CE3F20070456F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C703ECDD296CE3F20070456F /* Main.storyboard */; };
+		C703ECDE296CE3F20070456F /* Combinestagram.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C703ECDD296CE3F20070456F /* Combinestagram.storyboard */; };
 		C703ECE1296CE4960070456F /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703ECDF296CE4960070456F /* PhotosViewController.swift */; };
 		C703ECE2296CE4960070456F /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C703ECE0296CE4960070456F /* PhotoCell.swift */; };
 		C73AAD17296F8BA200C5AA05 /* PHPhotoLibrary+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73AAD16296F8BA200C5AA05 /* PHPhotoLibrary+Rx.swift */; };
+		C78431812970DEE200A4D371 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78431802970DEE200A4D371 /* Main.storyboard */; };
+		C78431832970DEEB00A4D371 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78431822970DEEB00A4D371 /* MainViewController.swift */; };
+		C78431862970EB5D00A4D371 /* GitFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78431852970EB5D00A4D371 /* GitFeed.storyboard */; };
+		C784318C2970EB9500A4D371 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784318B2970EB9500A4D371 /* ActivityController.swift */; };
+		C784318E2970EB9900A4D371 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784318D2970EB9900A4D371 /* Event.swift */; };
 		C7C85A38296E63A9004346B1 /* UIViewController+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */; };
 		C7D592662967E4E2002C1868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592652967E4E2002C1868 /* AppDelegate.swift */; };
 		C7D592682967E4E2002C1868 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592672967E4E2002C1868 /* SceneDelegate.swift */; };
-		C7D5926A2967E4E2002C1868 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592692967E4E2002C1868 /* MainViewController.swift */; };
+		C7D5926A2967E4E2002C1868 /* CombinestagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592692967E4E2002C1868 /* CombinestagramViewController.swift */; };
 		C7D5926F2967E4E3002C1868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7D5926E2967E4E3002C1868 /* Assets.xcassets */; };
 		C7D592722967E4E3002C1868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7D592702967E4E3002C1868 /* LaunchScreen.storyboard */; };
 		C7D5927D2967E4E3002C1868 /* RxSwift_KodecoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5927C2967E4E3002C1868 /* RxSwift_KodecoTests.swift */; };
@@ -56,16 +61,21 @@
 		C6EB6F14014A6EC25A766D8D /* Pods_RxSwift_Kodeco_RxSwift_KodecoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_Kodeco_RxSwift_KodecoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C703ECD7296CE3910070456F /* PhotoWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoWriter.swift; sourceTree = "<group>"; };
 		C703ECD9296CE3910070456F /* UIImage+Collage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Collage.swift"; sourceTree = "<group>"; };
-		C703ECDD296CE3F20070456F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C703ECDD296CE3F20070456F /* Combinestagram.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Combinestagram.storyboard; sourceTree = "<group>"; };
 		C703ECDF296CE4960070456F /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		C703ECE0296CE4960070456F /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		C73AAD16296F8BA200C5AA05 /* PHPhotoLibrary+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+Rx.swift"; sourceTree = "<group>"; };
 		C73AAD18296FD58E00C5AA05 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C78431802970DEE200A4D371 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C78431822970DEEB00A4D371 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C78431852970EB5D00A4D371 /* GitFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GitFeed.storyboard; sourceTree = "<group>"; };
+		C784318B2970EB9500A4D371 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
+		C784318D2970EB9900A4D371 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+rx.swift"; sourceTree = "<group>"; };
 		C7D592622967E4E2002C1868 /* RxSwift-Kodeco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift-Kodeco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D592652967E4E2002C1868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7D592672967E4E2002C1868 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C7D592692967E4E2002C1868 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C7D592692967E4E2002C1868 /* CombinestagramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinestagramViewController.swift; sourceTree = "<group>"; };
 		C7D5926E2967E4E3002C1868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C7D592712967E4E3002C1868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7D592732967E4E3002C1868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				C703ECD6296CE3870070456F /* Classes */,
-				C703ECDD296CE3F20070456F /* Main.storyboard */,
-				C7D592692967E4E2002C1868 /* MainViewController.swift */,
+				C703ECDD296CE3F20070456F /* Combinestagram.storyboard */,
+				C7D592692967E4E2002C1868 /* CombinestagramViewController.swift */,
 				C703ECE0296CE4960070456F /* PhotoCell.swift */,
 				C703ECDF296CE4960070456F /* PhotosViewController.swift */,
 				C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */,
@@ -158,6 +168,16 @@
 				C7D592672967E4E2002C1868 /* SceneDelegate.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		C78431842970EB1C00A4D371 /* GitFeed */ = {
+			isa = PBXGroup;
+			children = (
+				C78431852970EB5D00A4D371 /* GitFeed.storyboard */,
+				C784318B2970EB9500A4D371 /* ActivityController.swift */,
+				C784318D2970EB9900A4D371 /* Event.swift */,
+			);
+			path = GitFeed;
 			sourceTree = "<group>";
 		};
 		C7D592592967E4E2002C1868 = {
@@ -189,9 +209,12 @@
 			children = (
 				C703ECE3296CE4AE0070456F /* Support */,
 				C703ECCD296CE3180070456F /* Combinestagram */,
+				C78431842970EB1C00A4D371 /* GitFeed */,
 				C7D5926E2967E4E3002C1868 /* Assets.xcassets */,
 				C7D592702967E4E3002C1868 /* LaunchScreen.storyboard */,
 				C7D592732967E4E3002C1868 /* Info.plist */,
+				C78431802970DEE200A4D371 /* Main.storyboard */,
+				C78431822970DEEB00A4D371 /* MainViewController.swift */,
 			);
 			path = "RxSwift-Kodeco";
 			sourceTree = "<group>";
@@ -324,8 +347,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7D592722967E4E3002C1868 /* LaunchScreen.storyboard in Resources */,
+				C78431862970EB5D00A4D371 /* GitFeed.storyboard in Resources */,
 				C7D5926F2967E4E3002C1868 /* Assets.xcassets in Resources */,
-				C703ECDE296CE3F20070456F /* Main.storyboard in Resources */,
+				C703ECDE296CE3F20070456F /* Combinestagram.storyboard in Resources */,
+				C78431812970DEE200A4D371 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,13 +497,16 @@
 			files = (
 				C7C85A38296E63A9004346B1 /* UIViewController+rx.swift in Sources */,
 				C703ECE2296CE4960070456F /* PhotoCell.swift in Sources */,
-				C7D5926A2967E4E2002C1868 /* MainViewController.swift in Sources */,
+				C7D5926A2967E4E2002C1868 /* CombinestagramViewController.swift in Sources */,
 				C703ECDC296CE3910070456F /* UIImage+Collage.swift in Sources */,
+				C784318E2970EB9900A4D371 /* Event.swift in Sources */,
 				C73AAD17296F8BA200C5AA05 /* PHPhotoLibrary+Rx.swift in Sources */,
 				C7D592662967E4E2002C1868 /* AppDelegate.swift in Sources */,
 				C703ECE1296CE4960070456F /* PhotosViewController.swift in Sources */,
 				C7D592682967E4E2002C1868 /* SceneDelegate.swift in Sources */,
 				C703ECDA296CE3910070456F /* PhotoWriter.swift in Sources */,
+				C784318C2970EB9500A4D371 /* ActivityController.swift in Sources */,
+				C78431832970DEEB00A4D371 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

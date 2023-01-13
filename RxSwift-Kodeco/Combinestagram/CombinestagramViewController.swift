@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxRelay
 
-class MainViewController: UIViewController {
+class CombinestagramViewController: UIViewController {
 
 	@IBOutlet weak var imagePreview: UIImageView!
 	@IBOutlet weak var buttonClear: UIButton!
