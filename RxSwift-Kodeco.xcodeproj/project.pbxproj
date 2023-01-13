@@ -60,6 +60,7 @@
 		C703ECDF296CE4960070456F /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		C703ECE0296CE4960070456F /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		C73AAD16296F8BA200C5AA05 /* PHPhotoLibrary+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+Rx.swift"; sourceTree = "<group>"; };
+		C73AAD18296FD58E00C5AA05 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+rx.swift"; sourceTree = "<group>"; };
 		C7D592622967E4E2002C1868 /* RxSwift-Kodeco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift-Kodeco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D592652967E4E2002C1868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +74,7 @@
 		C7D592822967E4E3002C1868 /* RxSwift-KodecoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RxSwift-KodecoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D592862967E4E3002C1868 /* RxSwift_KodecoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift_KodecoUITests.swift; sourceTree = "<group>"; };
 		C7D592882967E4E3002C1868 /* RxSwift_KodecoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift_KodecoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C7D592952967E52A002C1868 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C7D592952967E52A002C1868 /* PG_Subject+FilteringOP.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "PG_Subject+FilteringOP.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +163,8 @@
 		C7D592592967E4E2002C1868 = {
 			isa = PBXGroup;
 			children = (
-				C7D592952967E52A002C1868 /* MyPlayground.playground */,
+				C7D592952967E52A002C1868 /* PG_Subject+FilteringOP.playground */,
+				C73AAD18296FD58E00C5AA05 /* MyPlayground.playground */,
 				C7D592642967E4E2002C1868 /* RxSwift-Kodeco */,
 				C7D5927B2967E4E3002C1868 /* RxSwift-KodecoTests */,
 				C7D592852967E4E3002C1868 /* RxSwift-KodecoUITests */,
