@@ -65,7 +65,7 @@
 		C703ECDF296CE4960070456F /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		C703ECE0296CE4960070456F /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		C73AAD16296F8BA200C5AA05 /* PHPhotoLibrary+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+Rx.swift"; sourceTree = "<group>"; };
-		C73AAD18296FD58E00C5AA05 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C73AAD18296FD58E00C5AA05 /* PG_Operators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PG_Operators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C78431802970DEE200A4D371 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C78431822970DEEB00A4D371 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C78431852970EB5D00A4D371 /* GitFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GitFeed.storyboard; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				C7D592952967E52A002C1868 /* PG_Subject+FilteringOP.playground */,
-				C73AAD18296FD58E00C5AA05 /* MyPlayground.playground */,
+				C73AAD18296FD58E00C5AA05 /* PG_Operators.playground */,
 				C7D592642967E4E2002C1868 /* RxSwift-Kodeco */,
 				C7D5927B2967E4E3002C1868 /* RxSwift-KodecoTests */,
 				C7D592852967E4E3002C1868 /* RxSwift-KodecoUITests */,
