@@ -28,4 +28,12 @@ class MainViewController: UIViewController {
 			self.navigationController?.pushViewController(vc, animated: true)
 		}
 	}
+	
+	@IBAction func ourPlanet() {
+		let sb = UIStoryboard(name: "OurPlanet", bundle: nil)
+		let vc = sb.instantiateViewController(withIdentifier: "CategoriesViewController") as! CategoriesViewController
+		DispatchQueue.main.async {
+			self.navigationController?.pushViewController(vc, animated: true)
+		}
+	}
 }

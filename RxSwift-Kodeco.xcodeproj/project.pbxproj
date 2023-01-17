@@ -20,6 +20,16 @@
 		C78431862970EB5D00A4D371 /* GitFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78431852970EB5D00A4D371 /* GitFeed.storyboard */; };
 		C784318C2970EB9500A4D371 /* ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784318B2970EB9500A4D371 /* ActivityController.swift */; };
 		C784318E2970EB9900A4D371 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784318D2970EB9900A4D371 /* Event.swift */; };
+		C785D072297681DF00864541 /* OurPlanet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C785D071297681DF00864541 /* OurPlanet.storyboard */; };
+		C785D0742976823600864541 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0732976823600864541 /* CategoriesViewController.swift */; };
+		C785D076297682C600864541 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D075297682C600864541 /* EventCell.swift */; };
+		C785D078297682F600864541 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D077297682F600864541 /* EventsViewController.swift */; };
+		C785D07B2976834500864541 /* EOCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D07A2976834500864541 /* EOCategory.swift */; };
+		C785D07D2976834A00864541 /* EOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D07C2976834A00864541 /* EOError.swift */; };
+		C785D07F2976834E00864541 /* EOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D07E2976834E00864541 /* EOEvent.swift */; };
+		C785D0832976836100864541 /* EONET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0822976836100864541 /* EONET.swift */; };
+		C785D0852976836B00864541 /* EOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0842976836B00864541 /* EOLocation.swift */; };
+		C785D0872976837100864541 /* EOEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0862976837100864541 /* EOEnvelope.swift */; };
 		C7C85A38296E63A9004346B1 /* UIViewController+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */; };
 		C7D592662967E4E2002C1868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592652967E4E2002C1868 /* AppDelegate.swift */; };
 		C7D592682967E4E2002C1868 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592672967E4E2002C1868 /* SceneDelegate.swift */; };
@@ -71,6 +81,16 @@
 		C78431852970EB5D00A4D371 /* GitFeed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GitFeed.storyboard; sourceTree = "<group>"; };
 		C784318B2970EB9500A4D371 /* ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityController.swift; sourceTree = "<group>"; };
 		C784318D2970EB9900A4D371 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		C785D071297681DF00864541 /* OurPlanet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OurPlanet.storyboard; sourceTree = "<group>"; };
+		C785D0732976823600864541 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		C785D075297682C600864541 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		C785D077297682F600864541 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		C785D07A2976834500864541 /* EOCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOCategory.swift; sourceTree = "<group>"; };
+		C785D07C2976834A00864541 /* EOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOError.swift; sourceTree = "<group>"; };
+		C785D07E2976834E00864541 /* EOEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOEvent.swift; sourceTree = "<group>"; };
+		C785D0822976836100864541 /* EONET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EONET.swift; sourceTree = "<group>"; };
+		C785D0842976836B00864541 /* EOLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOLocation.swift; sourceTree = "<group>"; };
+		C785D0862976837100864541 /* EOEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOEnvelope.swift; sourceTree = "<group>"; };
 		C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+rx.swift"; sourceTree = "<group>"; };
 		C7D592622967E4E2002C1868 /* RxSwift-Kodeco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift-Kodeco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D592652967E4E2002C1868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +200,31 @@
 			path = GitFeed;
 			sourceTree = "<group>";
 		};
+		C785D070297681A900864541 /* OurPlanet */ = {
+			isa = PBXGroup;
+			children = (
+				C785D0732976823600864541 /* CategoriesViewController.swift */,
+				C785D077297682F600864541 /* EventsViewController.swift */,
+				C785D075297682C600864541 /* EventCell.swift */,
+				C785D071297681DF00864541 /* OurPlanet.storyboard */,
+				C785D0792976832B00864541 /* Model */,
+			);
+			path = OurPlanet;
+			sourceTree = "<group>";
+		};
+		C785D0792976832B00864541 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C785D07A2976834500864541 /* EOCategory.swift */,
+				C785D07C2976834A00864541 /* EOError.swift */,
+				C785D07E2976834E00864541 /* EOEvent.swift */,
+				C785D0822976836100864541 /* EONET.swift */,
+				C785D0842976836B00864541 /* EOLocation.swift */,
+				C785D0862976837100864541 /* EOEnvelope.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C7D592592967E4E2002C1868 = {
 			isa = PBXGroup;
 			children = (
@@ -210,11 +255,12 @@
 				C703ECE3296CE4AE0070456F /* Support */,
 				C703ECCD296CE3180070456F /* Combinestagram */,
 				C78431842970EB1C00A4D371 /* GitFeed */,
+				C785D070297681A900864541 /* OurPlanet */,
 				C7D5926E2967E4E3002C1868 /* Assets.xcassets */,
-				C7D592702967E4E3002C1868 /* LaunchScreen.storyboard */,
 				C7D592732967E4E3002C1868 /* Info.plist */,
-				C78431802970DEE200A4D371 /* Main.storyboard */,
 				C78431822970DEEB00A4D371 /* MainViewController.swift */,
+				C78431802970DEE200A4D371 /* Main.storyboard */,
+				C7D592702967E4E3002C1868 /* LaunchScreen.storyboard */,
 			);
 			path = "RxSwift-Kodeco";
 			sourceTree = "<group>";
@@ -347,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7D592722967E4E3002C1868 /* LaunchScreen.storyboard in Resources */,
+				C785D072297681DF00864541 /* OurPlanet.storyboard in Resources */,
 				C78431862970EB5D00A4D371 /* GitFeed.storyboard in Resources */,
 				C7D5926F2967E4E3002C1868 /* Assets.xcassets in Resources */,
 				C703ECDE296CE3F20070456F /* Combinestagram.storyboard in Resources */,
@@ -495,18 +542,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C785D07F2976834E00864541 /* EOEvent.swift in Sources */,
 				C7C85A38296E63A9004346B1 /* UIViewController+rx.swift in Sources */,
 				C703ECE2296CE4960070456F /* PhotoCell.swift in Sources */,
 				C7D5926A2967E4E2002C1868 /* CombinestagramViewController.swift in Sources */,
 				C703ECDC296CE3910070456F /* UIImage+Collage.swift in Sources */,
 				C784318E2970EB9900A4D371 /* Event.swift in Sources */,
 				C73AAD17296F8BA200C5AA05 /* PHPhotoLibrary+Rx.swift in Sources */,
+				C785D0832976836100864541 /* EONET.swift in Sources */,
+				C785D0852976836B00864541 /* EOLocation.swift in Sources */,
+				C785D076297682C600864541 /* EventCell.swift in Sources */,
 				C7D592662967E4E2002C1868 /* AppDelegate.swift in Sources */,
 				C703ECE1296CE4960070456F /* PhotosViewController.swift in Sources */,
 				C7D592682967E4E2002C1868 /* SceneDelegate.swift in Sources */,
 				C703ECDA296CE3910070456F /* PhotoWriter.swift in Sources */,
 				C784318C2970EB9500A4D371 /* ActivityController.swift in Sources */,
 				C78431832970DEEB00A4D371 /* MainViewController.swift in Sources */,
+				C785D07B2976834500864541 /* EOCategory.swift in Sources */,
+				C785D0872976837100864541 /* EOEnvelope.swift in Sources */,
+				C785D0742976823600864541 /* CategoriesViewController.swift in Sources */,
+				C785D07D2976834A00864541 /* EOError.swift in Sources */,
+				C785D078297682F600864541 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
