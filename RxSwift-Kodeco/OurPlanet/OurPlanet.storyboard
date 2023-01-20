@@ -94,7 +94,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NpN-g7-Sau" secondAttribute="trailing" id="1AE-l3-k2g"/>
                             <constraint firstItem="iuO-Dc-7KD" firstAttribute="top" secondItem="yEI-PB-Ue2" secondAttribute="bottom" constant="20" id="3uV-HE-xfy"/>
@@ -159,7 +159,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Db6-PF-SbJ" secondAttribute="bottom" id="7n8-t1-Uti"/>
                             <constraint firstItem="Pkg-Wr-lWe" firstAttribute="leading" secondItem="3bC-1T-vlo" secondAttribute="leading" id="Uh7-ko-SbB"/>
