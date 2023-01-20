@@ -13,7 +13,7 @@ import Kingfisher
 class ActivityController: UITableViewController {
 	private let repo = "ReactiveX/RxSwift"
 
-	private let events = BehaviorRelay<[Event]>(value: [])
+	private let events = BehaviorRelay<[GFEvent]>(value: [])
 	private let bag = DisposeBag()
 
 	private let eventsFileURL = cachedFileURL("events.json")
@@ -34,7 +34,7 @@ class ActivityController: UITableViewController {
 		
 		let decoder = JSONDecoder()
 		if let eventData = try? Data(contentsOf: eventsFileURL),
-			 let persistedEvents = try? decoder.decode([Event].self, from: eventData) {
+			 let persistedEvents = try? decoder.decode([GFEvent].self, from: eventData) {
 			events.accept(persistedEvents)
 		}
 		
@@ -76,8 +76,8 @@ class ActivityController: UITableViewController {
 			.filter { response, _ in
 				return 200..<300 ~= response.statusCode
 			}
-			.compactMap { _, data -> [Event]? in
-				return try? JSONDecoder().decode([Event].self, from: data)
+			.compactMap { _, data -> [GFEvent]? in
+				return try? JSONDecoder().decode([GFEvent].self, from: data)
 			}
 			.subscribe(onNext: { [weak self] newEvents in
 				self?.processEvents(newEvents)
@@ -100,10 +100,10 @@ class ActivityController: UITableViewController {
 			.disposed(by: bag)
 	}
 
-	func processEvents(_ newEvents: [Event]) {
+	func processEvents(_ newEvents: [GFEvent]) {
 		var updatedEvents = newEvents + events.value
 		if updatedEvents.count > 50 {
-			updatedEvents = [Event](updatedEvents.prefix(upTo: 50))
+			updatedEvents = [GFEvent](updatedEvents.prefix(upTo: 50))
 		}
 		
 		events.accept(updatedEvents)

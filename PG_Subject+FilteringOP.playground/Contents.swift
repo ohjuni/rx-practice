@@ -248,9 +248,9 @@ enum MyError: Error {
 	case anError
 }
 
-//func print<T: CustomStringConvertible>(label: String, event: Event<T>) {
-//	print(label, (event.element ?? event.error) ?? event)
-//}
+func print<T: CustomStringConvertible>(label: String, event: Event<T>) {
+	print(label, (event.element ?? event.error) ?? event)
+}
 
 example(of: "BehaviorSubject") {
 	let subject = BehaviorSubject(value: "Initial value") // ~= CurrentValueSubject
@@ -258,8 +258,7 @@ example(of: "BehaviorSubject") {
 
 	subject
 		.subscribe {
-//			print(label: "1)", event: $0)
-			print("1) \(String(describing: $0.element))")
+			print(label: "1)", event: $0)
 		}
 		.disposed(by: disposeBag)
 
@@ -269,8 +268,7 @@ example(of: "BehaviorSubject") {
 
 	subject
 		.subscribe {
-//			print(label: "2)", event: $0)
-			print("2) \(String(describing: $0.element))")
+			print(label: "2)", event: $0)
 		}
 		.disposed(by: disposeBag)
 }
@@ -285,15 +283,13 @@ example(of: "ReplaySubject") {
 
 	subject
 		.subscribe {
-//			print(label: "1)", event: $0)
-			print("1) \(String(describing: $0.element))")
+			print(label: "1)", event: $0)
 		}
 		.disposed(by: disposeBag)
 
 	subject
 		.subscribe {
-//			print(label: "2)", event: $0)
-			print("2) \(String(describing: $0.element))")
+			print(label: "2)", event: $0)
 		}
 		.disposed(by: disposeBag)
 
@@ -305,8 +301,7 @@ example(of: "ReplaySubject") {
 
 	subject
 		.subscribe {
-//			print(label: "3)", event: $0)
-			print("3) \(String(describing: $0.element))")
+			print(label: "3)", event: $0)
 		}
 		.disposed(by: disposeBag)
 }
@@ -331,15 +326,13 @@ example(of: "BehaviorRelay") {
 	relay.accept("New initial value")
 
 	relay.subscribe {
-//		print(label: "1)", event: $0)
-		print("1) \(String(describing: $0.element))")
+		print(label: "1)", event: $0)
 	}.disposed(by: disposeBag)
 
 	relay.accept("1")
 
 	relay.subscribe {
-//		print(label: "2)", event: $0)
-		print("2) \(String(describing: $0.element))")
+		print(label: "2)", event: $0)
 	}.disposed(by: disposeBag)
 
 	relay.accept("2")

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event: Codable {
+struct GFEvent: Codable {
 	let action: String
 	let repo: Repo
 	let actor: Actor

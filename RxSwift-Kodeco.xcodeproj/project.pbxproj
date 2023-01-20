@@ -91,6 +91,7 @@
 		C785D0822976836100864541 /* EONET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EONET.swift; sourceTree = "<group>"; };
 		C785D0842976836B00864541 /* EOLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOLocation.swift; sourceTree = "<group>"; };
 		C785D0862976837100864541 /* EOEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOEnvelope.swift; sourceTree = "<group>"; };
+		C7899437297A35A300AB9925 /* PG_TimeBasedOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PG_TimeBasedOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+rx.swift"; sourceTree = "<group>"; };
 		C7D592622967E4E2002C1868 /* RxSwift-Kodeco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift-Kodeco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D592652967E4E2002C1868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 			children = (
 				C7D592952967E52A002C1868 /* PG_Subject+FilteringOP.playground */,
 				C73AAD18296FD58E00C5AA05 /* PG_Operators.playground */,
+				C7899437297A35A300AB9925 /* PG_TimeBasedOperators.playground */,
 				C7D592642967E4E2002C1868 /* RxSwift-Kodeco */,
 				C7D5927B2967E4E3002C1868 /* RxSwift-KodecoTests */,
 				C7D592852967E4E3002C1868 /* RxSwift-KodecoUITests */,
