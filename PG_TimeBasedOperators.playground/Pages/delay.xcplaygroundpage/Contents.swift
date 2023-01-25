@@ -10,13 +10,6 @@ let sourceObservable = PublishSubject<Int>()
 let sourceTimeline = TimelineView<Int>.make()
 let delayedTimeline = TimelineView<Int>.make()
 
-let stack = UIStackView.makeVertical([
-	UILabel.makeTitle("delay"),
-	UILabel.make("Emitted elements (\(elementsPerSecond) per sec.):"),
-	sourceTimeline,
-	UILabel.make("Delayed elements (with a \(delay)s delay):"),
-	delayedTimeline])
-
 var current = 1
 let timer = DispatchSource.timer(interval: 1.0 / Double(elementsPerSecond), queue: .main) {
 	sourceObservable.onNext(current)
@@ -30,7 +23,24 @@ _ = sourceObservable.subscribe(sourceTimeline)
 
 // Start coding here
 
+//_ = sourceObservable
+////	.delaySubscription(delay, scheduler: MainScheduler.instance)
+//	.delay(delay, scheduler: MainScheduler.instance)
+//	.subscribe(delayedTimeline)
 
+_ = Observable<Int>
+	.timer(.seconds(3), scheduler: MainScheduler.instance)
+	.flatMap({ _ in
+		sourceObservable.delay(delay, scheduler: MainScheduler.instance)
+	})
+	.subscribe(delayedTimeline)
+
+let stack = UIStackView.makeVertical([
+	UILabel.makeTitle("delay"),
+	UILabel.make("Emitted elements (\(elementsPerSecond) per sec.):"),
+	sourceTimeline,
+	UILabel.make("Delayed elements (with a \(delay)s delay):"),
+	delayedTimeline])
 
 let hostView = setupHostView()
 hostView.addSubview(stack)
