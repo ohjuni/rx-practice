@@ -36,4 +36,12 @@ class MainViewController: UIViewController {
 			self.navigationController?.pushViewController(vc, animated: true)
 		}
 	}
+	
+	@IBAction func wundercast() {
+		let sb = UIStoryboard(name: "Wundercast", bundle: nil)
+		let vc = sb.instantiateViewController(withIdentifier: "WunderViewController") as! WunderViewController
+		DispatchQueue.main.async {
+			self.navigationController?.pushViewController(vc, animated: true)
+		}
+	}
 }

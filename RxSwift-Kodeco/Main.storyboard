@@ -50,6 +50,15 @@
                                     <action selector="ourPlanet" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7rU-RB-hJd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMW-na-Q8I">
+                                <rect key="frame" x="138" y="495" width="116" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Wundercast"/>
+                                <connections>
+                                    <action selector="wundercast" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6Jt-nE-eHq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
