@@ -8,6 +8,8 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CoreLocation
+import MapKit
 
 class ApiController {
 	struct Weather: Decodable {
@@ -15,22 +17,26 @@ class ApiController {
 		let temperature: Int
 		let humidity: Int
 		let icon: String
+		let coordinate: CLLocationCoordinate2D
 
 		static let empty = Weather(
 			cityName: "Unknown",
 			temperature: -1000,
 			humidity: 0,
-			icon: iconNameToChar(icon: "e")
+			icon: iconNameToChar(icon: "e"),
+			coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0)
 		)
 
 		init(cityName: String,
 				 temperature: Int,
 				 humidity: Int,
-				 icon: String) {
+				 icon: String,
+				 coordinate: CLLocationCoordinate2D) {
 			self.cityName = cityName
 			self.temperature = temperature
 			self.humidity = humidity
 			self.icon = icon
+			self.coordinate = coordinate
 		}
 
 		init(from decoder: Decoder) throws {
@@ -42,12 +48,15 @@ class ApiController {
 			let mainInfo = try values.nestedContainer(keyedBy: MainKeys.self, forKey: .main)
 			temperature = Int(try mainInfo.decode(Double.self, forKey: .temp))
 			humidity = try mainInfo.decode(Int.self, forKey: .humidity)
+			let coordinate = try values.decode(Coordinate.self, forKey: .coordinate)
+			self.coordinate = CLLocationCoordinate2D(latitude: coordinate.lat, longitude: coordinate.lon)
 		}
 
 		enum CodingKeys: String, CodingKey {
 			case cityName = "name"
 			case main
 			case weather
+			case coordinate = "coord"
 		}
 
 		enum MainKeys: String, CodingKey {
@@ -60,6 +69,11 @@ class ApiController {
 			let main: String
 			let description: String
 			let icon: String
+		}
+		
+		private struct Coordinate: Decodable {
+			let lat: CLLocationDegrees
+			let lon: CLLocationDegrees
 		}
 	}
 
@@ -156,5 +170,65 @@ public func iconNameToChar(icon: String) -> String {
 		return "\u{f10e}"
 	default:
 		return "E"
+	}
+}
+
+private func imageFromText(text: String, font: UIFont) -> UIImage {
+	let size = text.size(withAttributes: [NSAttributedString.Key.font: font])
+
+	UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+	text.draw(at: CGPoint(x: 0, y:0), withAttributes: [NSAttributedString.Key.font: font])
+
+	let image = UIGraphicsGetImageFromCurrentImageContext()
+	UIGraphicsEndImageContext()
+
+	return image ?? UIImage()
+}
+
+extension ApiController.Weather {
+	func overlay() -> Overlay {
+		let coordinates: [CLLocationCoordinate2D] = [
+			CLLocationCoordinate2D(latitude: coordinate.latitude - 0.25,
+														 longitude: coordinate.longitude - 0.25),
+			CLLocationCoordinate2D(latitude: coordinate.latitude + 0.25,
+														 longitude: coordinate.longitude + 0.25)
+		]
+
+		let points = coordinates.map { MKMapPoint($0) }
+		let rects = points.map { MKMapRect(origin: $0, size: MKMapSize(width: 0, height: 0)) }
+		let mapRectUnion: (MKMapRect, MKMapRect) -> MKMapRect = { $0.union($1) }
+		let fittingRect = rects.reduce(MKMapRect.null, mapRectUnion)
+		return Overlay(icon: icon, coordinate: coordinate, boundingMapRect: fittingRect)
+	}
+
+	class Overlay: NSObject, MKOverlay {
+		var coordinate: CLLocationCoordinate2D
+		var boundingMapRect: MKMapRect
+		let icon: String
+
+		init(icon: String, coordinate: CLLocationCoordinate2D, boundingMapRect: MKMapRect) {
+			self.coordinate = coordinate
+			self.boundingMapRect = boundingMapRect
+			self.icon = icon
+		}
+	}
+
+	class OverlayView: MKOverlayRenderer {
+		var overlayIcon: String
+
+		init(overlay:MKOverlay, overlayIcon:String) {
+			self.overlayIcon = overlayIcon
+			super.init(overlay: overlay)
+		}
+
+		public override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
+			let imageReference = imageFromText(text: overlayIcon, font: UIFont(name: "Flaticon", size: 32.0)!).cgImage
+			let theMapRect = overlay.boundingMapRect
+			let theRect = rect(for: theMapRect)
+
+			context.scaleBy(x: 1.0, y: -1.0)
+			context.translateBy(x: 0.0, y: -theRect.size.height)
+			context.draw(imageReference!, in: theRect)
+		}
 	}
 }

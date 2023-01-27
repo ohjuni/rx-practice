@@ -8,8 +8,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MapKit
 
 class WunderViewController: UIViewController {
+	@IBOutlet private var mapView: MKMapView!
+	@IBOutlet private var mapButton: UIButton!
+	@IBOutlet private var geoLocationButton: UIButton!
+	@IBOutlet private var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet private var searchCityName: UITextField!
 	@IBOutlet private var tempLabel: UILabel!
 	@IBOutlet private var humidityLabel: UILabel!
@@ -23,16 +28,6 @@ class WunderViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 
 		style()
-		
-		ApiController.shared.currentWeather(for: "Seoul")
-			.observe(on: MainScheduler.instance)
-			.subscribe(onNext: { data in
-				self.tempLabel.text = "\(data.temperature)° C"
-				self.iconLabel.text = data.icon
-				self.humidityLabel.text = "\(data.humidity)%"
-				self.cityNameLabel.text = data.cityName
-			})
-			.disposed(by: bag)
 		
 //		searchCityName.rx.text.orEmpty
 //			.filter { !$0.isEmpty }

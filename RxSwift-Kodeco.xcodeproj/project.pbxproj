@@ -37,6 +37,8 @@
 		C785D0872976837100864541 /* EOEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0862976837100864541 /* EOEnvelope.swift */; };
 		C7C85A38296E63A9004346B1 /* UIViewController+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */; };
 		C7C8EC1C2981F6F70020E7E7 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8EC1B2981F6F70020E7E7 /* SecretKeys.swift */; };
+		C7C8EC1F298261F80020E7E7 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8EC1E298261F80020E7E7 /* CLLocationManager+Rx.swift */; };
+		C7C8EC21298261FF0020E7E7 /* MKMapView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8EC20298261FF0020E7E7 /* MKMapView+Rx.swift */; };
 		C7D592662967E4E2002C1868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592652967E4E2002C1868 /* AppDelegate.swift */; };
 		C7D592682967E4E2002C1868 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592672967E4E2002C1868 /* SceneDelegate.swift */; };
 		C7D5926A2967E4E2002C1868 /* CombinestagramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D592692967E4E2002C1868 /* CombinestagramViewController.swift */; };
@@ -106,6 +108,8 @@
 		C7899437297A35A300AB9925 /* PG_TimeBasedOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PG_TimeBasedOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+rx.swift"; sourceTree = "<group>"; };
 		C7C8EC1B2981F6F70020E7E7 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
+		C7C8EC1E298261F80020E7E7 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
+		C7C8EC20298261FF0020E7E7 /* MKMapView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Rx.swift"; sourceTree = "<group>"; };
 		C7D592622967E4E2002C1868 /* RxSwift-Kodeco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RxSwift-Kodeco.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7D592652967E4E2002C1868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7D592672967E4E2002C1868 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +233,7 @@
 		C769B7C12980F80D00B623B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7C8EC1D298261EA0020E7E7 /* Extensions */,
 				C769B7C42980FC6700B623B0 /* ApiController.swift */,
 			);
 			path = Controllers;
@@ -275,6 +280,15 @@
 				C785D0862976837100864541 /* EOEnvelope.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C7C8EC1D298261EA0020E7E7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C7C8EC1E298261F80020E7E7 /* CLLocationManager+Rx.swift */,
+				C7C8EC20298261FF0020E7E7 /* MKMapView+Rx.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C7D592592967E4E2002C1868 = {
@@ -600,6 +614,7 @@
 				C785D07F2976834E00864541 /* EOEvent.swift in Sources */,
 				C7C85A38296E63A9004346B1 /* UIViewController+rx.swift in Sources */,
 				C703ECE2296CE4960070456F /* PhotoCell.swift in Sources */,
+				C7C8EC21298261FF0020E7E7 /* MKMapView+Rx.swift in Sources */,
 				C7D5926A2967E4E2002C1868 /* CombinestagramViewController.swift in Sources */,
 				C703ECDC296CE3910070456F /* UIImage+Collage.swift in Sources */,
 				C784318E2970EB9900A4D371 /* Event.swift in Sources */,
@@ -612,6 +627,7 @@
 				C769B7BF2980F7F800B623B0 /* WunderViewController.swift in Sources */,
 				C703ECE1296CE4960070456F /* PhotosViewController.swift in Sources */,
 				C7D592682967E4E2002C1868 /* SceneDelegate.swift in Sources */,
+				C7C8EC1F298261F80020E7E7 /* CLLocationManager+Rx.swift in Sources */,
 				C769B7C52980FC6700B623B0 /* ApiController.swift in Sources */,
 				C703ECDA296CE3910070456F /* PhotoWriter.swift in Sources */,
 				C7C8EC1C2981F6F70020E7E7 /* SecretKeys.swift in Sources */,
