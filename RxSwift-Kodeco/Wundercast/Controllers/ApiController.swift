@@ -103,6 +103,15 @@ class ApiController {
 				try JSONDecoder().decode(Weather.self, from: data)
 			}
 	}
+	
+	func currentWeather(at coordinate: CLLocationCoordinate2D) -> Observable<Weather> {
+		buildRequest(pathComponent: "weather",
+								 params: [("lat", "\(coordinate.latitude)"),
+													("lon", "\(coordinate.longitude)")])
+			.map { data in
+				try JSONDecoder().decode(Weather.self, from: data)
+			}
+	}
 
 	// MARK: - Private Methods
 
@@ -147,27 +156,27 @@ class ApiController {
 public func iconNameToChar(icon: String) -> String {
 	switch icon {
 	case "01d":
-		return "\u{f11b}"
+		return "☀️"
 	case "01n":
-		return "\u{f110}"
+		return "☀️"
 	case "02d":
-		return "\u{f112}"
+		return "🌤️"
 	case "02n":
-		return "\u{f104}"
+		return "🌤️"
 	case "03d", "03n":
-		return "\u{f111}"
+		return "☁️"
 	case "04d", "04n":
-		return "\u{f111}"
+		return "☁️"
 	case "09d", "09n":
-		return "\u{f116}"
+		return "🌧️"
 	case "10d", "10n":
-		return "\u{f113}"
+		return "🌧️"
 	case "11d", "11n":
-		return "\u{f10d}"
+		return "⚡️"
 	case "13d", "13n":
-		return "\u{f119}"
+		return "❄️"
 	case "50d", "50n":
-		return "\u{f10e}"
+		return "🌫️"
 	default:
 		return "E"
 	}
@@ -222,7 +231,7 @@ extension ApiController.Weather {
 		}
 
 		public override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
-			let imageReference = imageFromText(text: overlayIcon, font: UIFont(name: "Flaticon", size: 32.0)!).cgImage
+			let imageReference = imageFromText(text: overlayIcon, font: UIFont(descriptor: .preferredFontDescriptor(withTextStyle: .body), size: 32)).cgImage
 			let theMapRect = overlay.boundingMapRect
 			let theRect = rect(for: theMapRect)
 

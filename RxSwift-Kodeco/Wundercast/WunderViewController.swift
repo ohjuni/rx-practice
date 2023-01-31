@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MapKit
+import CoreLocation
 
 class WunderViewController: UIViewController {
 	@IBOutlet private var mapView: MKMapView!
@@ -21,6 +22,7 @@ class WunderViewController: UIViewController {
 	@IBOutlet private var iconLabel: UILabel!
 	@IBOutlet private var cityNameLabel: UILabel!
 	
+	private let locationManager = CLLocationManager()
 	private let bag = DisposeBag()
 	
 	override func viewDidLoad() {
@@ -45,19 +47,58 @@ class WunderViewController: UIViewController {
 //			})
 //			.disposed(by: bag)
 		
-		let search = searchCityName.rx
-//			.text.orEmpty
+		let searchInput = searchCityName.rx
 			.controlEvent(.editingDidEndOnExit)
 			.map { self.searchCityName.text ?? "" }
 			.filter { !$0.isEmpty }
-			.flatMapLatest { text in
+		
+//		let search = searchInput
+//			.flatMapLatest { text in
+//				ApiController.shared
+//					.currentWeather(for: text)
+//					.catchAndReturn(.empty)
+//			}
+////			.share(replay: 1)
+////			.observe(on: MainScheduler.instance)
+//			.asDriver(onErrorJustReturn: .empty)
+		
+		let mapInput = mapView.rx.regionDidChangeAnimated
+			.skip(1)
+			.map { _ in
+				CLLocation(latitude: self.mapView.centerCoordinate.latitude,
+									 longitude: self.mapView.centerCoordinate.longitude)
+			}
+		
+		let geoInput = geoLocationButton.rx.tap
+			.flatMapLatest { _ in
+				self.locationManager.rx.getCurrentLocation()
+			}
+		
+		let geoSearch = Observable.merge(mapInput, geoInput)
+			.flatMapLatest { location in
 				ApiController.shared
-					.currentWeather(for: text)
+					.currentWeather(at: location.coordinate)
 					.catchAndReturn(.empty)
 			}
-//			.share(replay: 1)
-//			.observe(on: MainScheduler.instance)
+		
+		let textSearch = searchInput.flatMap { city in
+			ApiController.shared
+				.currentWeather(for: city)
+				.catchAndReturn(.empty)
+		}
+		
+		let search = Observable
+			.merge(geoSearch, textSearch)
 			.asDriver(onErrorJustReturn: .empty)
+		
+		let running = Observable.merge(
+			searchInput.map { _ in true },
+			mapInput.map { _ in true },
+			geoInput.map { _ in true },
+			search.map { _ in false }.asObservable()
+		)
+			.startWith(true)
+			.asDriver(onErrorJustReturn: false)
 		
 		search.map { "\($0.temperature)℃" }
 //			.bind(to: tempLabel.rx.text)
@@ -76,7 +117,37 @@ class WunderViewController: UIViewController {
 			.drive(cityNameLabel.rx.text)
 			.disposed(by: bag)
 
+		running
+			.skip(1)
+			.drive(activityIndicator.rx.isAnimating)
+			.disposed(by: bag)
 		
+		mapButton.rx.tap
+			.subscribe(onNext: { self.mapView.isHidden.toggle() })
+			.disposed(by: bag)
+		
+		mapView.rx
+			.setDelegate(self)
+			.disposed(by: bag)
+		
+		search
+			.map { $0.overlay() }
+			.drive(mapView.rx.overlay)
+			.disposed(by: bag)
+		
+//		geoLocationButton.rx.tap
+//			.subscribe(onNext: { [weak self] _ in
+//				guard let self = self else { return }
+//				self.locationManager.requestWhenInUseAuthorization()
+//				self.locationManager.startUpdatingLocation()
+//			})
+//			.disposed(by: bag)
+//
+//		locationManager.rx.didUpdateLocations
+//			.subscribe(onNext: { locations in
+//				print(locations)
+//			})
+//			.disposed(by: bag)
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -109,5 +180,15 @@ class WunderViewController: UIViewController {
 		humidityLabel.textColor = UIColor.cream
 		iconLabel.textColor = UIColor.cream
 		cityNameLabel.textColor = UIColor.cream
+	}
+}
+
+extension WunderViewController: MKMapViewDelegate {
+	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+		guard let overlay = overlay as? ApiController.Weather.Overlay else {
+			return MKOverlayRenderer()
+		}
+		
+		return ApiController.Weather.OverlayView(overlay: overlay, overlayIcon: overlay.icon)
 	}
 }
