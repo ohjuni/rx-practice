@@ -35,6 +35,9 @@
 		C785D0832976836100864541 /* EONET.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0822976836100864541 /* EONET.swift */; };
 		C785D0852976836B00864541 /* EOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0842976836B00864541 /* EOLocation.swift */; };
 		C785D0872976837100864541 /* EOEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = C785D0862976837100864541 /* EOEnvelope.swift */; };
+		C7C826B72989E686003ECEC1 /* RxReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C826B62989E686003ECEC1 /* RxReachability.swift */; };
+		C7C826BA2989E7AE003ECEC1 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7C826B92989E7AE003ECEC1 /* InfoView.xib */; };
+		C7C826BC2989E7B8003ECEC1 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C826BB2989E7B8003ECEC1 /* InfoView.swift */; };
 		C7C85A38296E63A9004346B1 /* UIViewController+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */; };
 		C7C8EC1C2981F6F70020E7E7 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8EC1B2981F6F70020E7E7 /* SecretKeys.swift */; };
 		C7C8EC1F298261F80020E7E7 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8EC1E298261F80020E7E7 /* CLLocationManager+Rx.swift */; };
@@ -106,6 +109,9 @@
 		C785D0842976836B00864541 /* EOLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOLocation.swift; sourceTree = "<group>"; };
 		C785D0862976837100864541 /* EOEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EOEnvelope.swift; sourceTree = "<group>"; };
 		C7899437297A35A300AB9925 /* PG_TimeBasedOperators.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PG_TimeBasedOperators.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C7C826B62989E686003ECEC1 /* RxReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxReachability.swift; sourceTree = "<group>"; };
+		C7C826B92989E7AE003ECEC1 /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		C7C826BB2989E7B8003ECEC1 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		C7C85A37296E63A9004346B1 /* UIViewController+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+rx.swift"; sourceTree = "<group>"; };
 		C7C8EC1B2981F6F70020E7E7 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		C7C8EC1E298261F80020E7E7 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 			children = (
 				C769B7C22980F82900B623B0 /* Assets */,
 				C769B7C12980F80D00B623B0 /* Controllers */,
+				C7C8EC1D298261EA0020E7E7 /* Extensions */,
 				C769B7C02980F80200B623B0 /* Utils */,
 				C769B7BC2980F7D700B623B0 /* Wundercast.storyboard */,
 				C769B7BE2980F7F800B623B0 /* WunderViewController.swift */,
@@ -224,6 +231,7 @@
 		C769B7C02980F80200B623B0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C7C826B82989E6B7003ECEC1 /* InfoView */,
 				C769B7C62980FC8600B623B0 /* Appearance.swift */,
 				C769B7C82980FC8A00B623B0 /* Colors.swift */,
 			);
@@ -233,7 +241,6 @@
 		C769B7C12980F80D00B623B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C7C8EC1D298261EA0020E7E7 /* Extensions */,
 				C769B7C42980FC6700B623B0 /* ApiController.swift */,
 			);
 			path = Controllers;
@@ -282,11 +289,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C7C826B82989E6B7003ECEC1 /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				C7C826B92989E7AE003ECEC1 /* InfoView.xib */,
+				C7C826BB2989E7B8003ECEC1 /* InfoView.swift */,
+			);
+			path = InfoView;
+			sourceTree = "<group>";
+		};
 		C7C8EC1D298261EA0020E7E7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				C7C8EC1E298261F80020E7E7 /* CLLocationManager+Rx.swift */,
 				C7C8EC20298261FF0020E7E7 /* MKMapView+Rx.swift */,
+				C7C826B62989E686003ECEC1 /* RxReachability.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,6 +481,7 @@
 				C785D072297681DF00864541 /* OurPlanet.storyboard in Resources */,
 				C78431862970EB5D00A4D371 /* GitFeed.storyboard in Resources */,
 				C7D5926F2967E4E3002C1868 /* Assets.xcassets in Resources */,
+				C7C826BA2989E7AE003ECEC1 /* InfoView.xib in Resources */,
 				C703ECDE296CE3F20070456F /* Combinestagram.storyboard in Resources */,
 				C78431812970DEE200A4D371 /* Main.storyboard in Resources */,
 				C769B7BD2980F7D700B623B0 /* Wundercast.storyboard in Resources */,
@@ -632,12 +650,14 @@
 				C703ECDA296CE3910070456F /* PhotoWriter.swift in Sources */,
 				C7C8EC1C2981F6F70020E7E7 /* SecretKeys.swift in Sources */,
 				C784318C2970EB9500A4D371 /* ActivityController.swift in Sources */,
+				C7C826B72989E686003ECEC1 /* RxReachability.swift in Sources */,
 				C78431832970DEEB00A4D371 /* MainViewController.swift in Sources */,
 				C785D07B2976834500864541 /* EOCategory.swift in Sources */,
 				C769B7C72980FC8600B623B0 /* Appearance.swift in Sources */,
 				C785D0872976837100864541 /* EOEnvelope.swift in Sources */,
 				C785D0742976823600864541 /* CategoriesViewController.swift in Sources */,
 				C785D07D2976834A00864541 /* EOError.swift in Sources */,
+				C7C826BC2989E7B8003ECEC1 /* InfoView.swift in Sources */,
 				C785D078297682F600864541 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -79,6 +79,14 @@
                                 </constraints>
                                 <state key="normal" image="map"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7L-Ql-fld">
+                                <rect key="frame" x="174.66666666666666" y="774" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="ArD-Va-whq"/>
+                                    <constraint firstAttribute="height" constant="44" id="qQa-e2-PyI"/>
+                                </constraints>
+                                <state key="normal" image="key"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oDR-yN-QNs"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -96,6 +104,7 @@
                             <constraint firstItem="XUU-8B-C0k" firstAttribute="height" secondItem="T8v-ai-vBw" secondAttribute="height" multiplier="0.605634" id="Rya-KX-8qK"/>
                             <constraint firstItem="IiK-1y-cez" firstAttribute="top" secondItem="j1j-Xv-AE7" secondAttribute="bottom" constant="8" id="TeL-tc-Vo3"/>
                             <constraint firstItem="XUU-8B-C0k" firstAttribute="width" secondItem="T8v-ai-vBw" secondAttribute="width" multiplier="0.954198" id="Wpw-wc-2cP"/>
+                            <constraint firstItem="f7L-Ql-fld" firstAttribute="centerX" secondItem="oDR-yN-QNs" secondAttribute="centerX" id="aK8-kq-beJ"/>
                             <constraint firstItem="lSP-sp-0bB" firstAttribute="centerY" secondItem="oDR-yN-QNs" secondAttribute="centerY" id="b4Z-NM-BpX"/>
                             <constraint firstItem="XUU-8B-C0k" firstAttribute="centerY" secondItem="oDR-yN-QNs" secondAttribute="centerY" id="bjc-tX-uiJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9ia-fR-Xhm" secondAttribute="trailing" id="fq4-fy-7mw"/>
@@ -103,6 +112,7 @@
                             <constraint firstItem="IiK-1y-cez" firstAttribute="top" secondItem="L6u-OF-F8R" secondAttribute="bottom" constant="8" id="hpF-I5-9f7"/>
                             <constraint firstItem="aJK-h1-FLi" firstAttribute="leading" secondItem="oDR-yN-QNs" secondAttribute="leading" constant="16" id="lL7-V0-SX2"/>
                             <constraint firstItem="yI5-5X-93S" firstAttribute="centerX" secondItem="IiK-1y-cez" secondAttribute="centerX" id="rQZ-0a-rRj"/>
+                            <constraint firstItem="oDR-yN-QNs" firstAttribute="bottom" secondItem="f7L-Ql-fld" secondAttribute="bottom" id="see-Wb-IyI"/>
                             <constraint firstItem="L6u-OF-F8R" firstAttribute="trailing" secondItem="IiK-1y-cez" secondAttribute="trailing" id="u0Q-uc-E4U"/>
                             <constraint firstItem="9ia-fR-Xhm" firstAttribute="leading" secondItem="T8v-ai-vBw" secondAttribute="leadingMargin" id="uG7-Tz-aln"/>
                             <constraint firstItem="IiK-1y-cez" firstAttribute="centerX" secondItem="T8v-ai-vBw" secondAttribute="centerX" id="xPO-Ai-Qce"/>
@@ -115,6 +125,7 @@
                         <outlet property="geoLocationButton" destination="aJK-h1-FLi" id="wKk-XZ-SYZ"/>
                         <outlet property="humidityLabel" destination="L6u-OF-F8R" id="qbs-6R-6Ud"/>
                         <outlet property="iconLabel" destination="IiK-1y-cez" id="Xa8-iJ-ppa"/>
+                        <outlet property="keyButton" destination="f7L-Ql-fld" id="lxY-Ak-Igp"/>
                         <outlet property="mapButton" destination="dDs-HQ-QOb" id="Pr1-1I-3IK"/>
                         <outlet property="mapView" destination="XUU-8B-C0k" id="5vN-Bc-2mW"/>
                         <outlet property="searchCityName" destination="9ia-fR-Xhm" id="iA1-GW-6WF"/>
@@ -127,6 +138,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="key" width="32" height="32"/>
         <image name="map" width="32" height="31"/>
         <image name="place-location" width="24" height="32"/>
     </resources>

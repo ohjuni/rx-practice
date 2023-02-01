@@ -14,6 +14,7 @@ import CoreLocation
 class WunderViewController: UIViewController {
 	@IBOutlet private var mapView: MKMapView!
 	@IBOutlet private var mapButton: UIButton!
+	@IBOutlet weak var keyButton: UIButton!
 	@IBOutlet private var geoLocationButton: UIButton!
 	@IBOutlet private var activityIndicator: UIActivityIndicatorView!
 	@IBOutlet private var searchCityName: UITextField!
@@ -25,42 +26,30 @@ class WunderViewController: UIViewController {
 	private let locationManager = CLLocationManager()
 	private let bag = DisposeBag()
 	
+	var keyTextField: UITextField?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 
 		style()
 		
-//		searchCityName.rx.text.orEmpty
-//			.filter { !$0.isEmpty }
-//			.flatMap { text in
-//				ApiController.shared
-//					.currentWeather(for: text)
-//					.catchAndReturn(.empty)
-//			}
-//			.observe(on: MainScheduler.instance)
-//			.subscribe(onNext: { data in
-//				self.tempLabel.text = "\(data.temperature)° C"
-//				self.iconLabel.text = data.icon
-//				self.humidityLabel.text = "\(data.humidity)%"
-//				self.cityNameLabel.text = data.cityName
-//			})
-//			.disposed(by: bag)
+		keyButton.rx.tap
+			.subscribe(onNext: { [weak self] _ in
+				self?.requestKey()
+			})
+			.disposed(by:bag)
+
+		let currentLocation = locationManager.rx.didUpdateLocations
+			.map { locations in locations[0] }
+			.filter { location in
+				return location.horizontalAccuracy == kCLLocationAccuracyNearestTenMeters
+			}
 		
 		let searchInput = searchCityName.rx
 			.controlEvent(.editingDidEndOnExit)
 			.map { self.searchCityName.text ?? "" }
 			.filter { !$0.isEmpty }
-		
-//		let search = searchInput
-//			.flatMapLatest { text in
-//				ApiController.shared
-//					.currentWeather(for: text)
-//					.catchAndReturn(.empty)
-//			}
-////			.share(replay: 1)
-////			.observe(on: MainScheduler.instance)
-//			.asDriver(onErrorJustReturn: .empty)
 		
 		let mapInput = mapView.rx.regionDidChangeAnimated
 			.skip(1)
@@ -70,16 +59,21 @@ class WunderViewController: UIViewController {
 			}
 		
 		let geoInput = geoLocationButton.rx.tap
-			.flatMapLatest { _ in
-				self.locationManager.rx.getCurrentLocation()
-			}
+			.do(onNext: { [weak self] _ in
+				self?.locationManager.requestWhenInUseAuthorization()
+				self?.locationManager.startUpdatingLocation()
+
+				self?.searchCityName.text = "Current Location"
+			})
 		
-		let geoSearch = Observable.merge(mapInput, geoInput)
-			.flatMapLatest { location in
-				ApiController.shared
-					.currentWeather(at: location.coordinate)
-					.catchAndReturn(.empty)
-			}
+		let geoLocation = geoInput.flatMap {
+			return currentLocation.take(1)
+		}
+		
+		let geoSearch = geoLocation.flatMap { location in
+			return ApiController.shared.currentWeather(at: location.coordinate)
+				.catchAndReturn(.empty)
+		}
 		
 		let textSearch = searchInput.flatMap { city in
 			ApiController.shared
@@ -134,20 +128,6 @@ class WunderViewController: UIViewController {
 			.map { $0.overlay() }
 			.drive(mapView.rx.overlay)
 			.disposed(by: bag)
-		
-//		geoLocationButton.rx.tap
-//			.subscribe(onNext: { [weak self] _ in
-//				guard let self = self else { return }
-//				self.locationManager.requestWhenInUseAuthorization()
-//				self.locationManager.startUpdatingLocation()
-//			})
-//			.disposed(by: bag)
-//
-//		locationManager.rx.didUpdateLocations
-//			.subscribe(onNext: { locations in
-//				print(locations)
-//			})
-//			.disposed(by: bag)
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -167,6 +147,26 @@ class WunderViewController: UIViewController {
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
+	}
+	
+	func requestKey() {
+		func configurationTextField(textField: UITextField!) {
+			self.keyTextField = textField
+		}
+
+		let alert = UIAlertController(title: "Api Key",
+																	message: "Add the api key:",
+																	preferredStyle: UIAlertController.Style.alert)
+
+		alert.addTextField(configurationHandler: configurationTextField)
+
+		alert.addAction(UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
+			ApiController.shared.apiKey.onNext(self?.keyTextField?.text ?? "")
+		})
+
+		alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive))
+
+		self.present(alert, animated: true)
 	}
 
 	// MARK: - Style

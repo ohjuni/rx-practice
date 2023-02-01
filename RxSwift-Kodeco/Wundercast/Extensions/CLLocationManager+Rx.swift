@@ -26,8 +26,15 @@ class RxCLLocationManagerDelegateProxy: DelegateProxy<CLLocationManager, CLLocat
 		register { RxCLLocationManagerDelegateProxy(locationManager: $0)	}
 	}
 	
-	
-	
+	static func currentDelegate(for object: CLLocationManager) -> CLLocationManagerDelegate? {
+		let locationManager: CLLocationManager = object
+		return locationManager.delegate
+	}
+
+	static func setCurrentDelegate(_ delegate: CLLocationManagerDelegate?, to object: CLLocationManager) {
+		let locationManager: CLLocationManager = object
+		locationManager.delegate = delegate
+	}
 	
 }
 

@@ -82,7 +82,7 @@ class ApiController {
 
 	/// The api key to communicate with openweathermap.org
 	/// Create you own on https://home.openweathermap.org/users/sign_up
-	private let apiKey = APIKEY_OPENWEATHERAPI
+	let apiKey = BehaviorSubject(value: APIKEY_OPENWEATHERAPI)
 
 	/// API base URL
 	let baseURL = URL(string: "https://api.openweathermap.org/data/2.5")!
@@ -119,32 +119,41 @@ class ApiController {
 	 * Private method to build a request with RxCocoa
 	 */
 	private func buildRequest(method: String = "GET", pathComponent: String, params: [(String, String)]) -> Observable<Data> {
-		let url = baseURL.appendingPathComponent(pathComponent)
-		var request = URLRequest(url: url)
-		let keyQueryItem = URLQueryItem(name: "appid", value: apiKey)
-		let unitsQueryItem = URLQueryItem(name: "units", value: "metric")
-		let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
+		let request: Observable<URLRequest> = Observable.create { observer in
+			let url = self.baseURL.appendingPathComponent(pathComponent)
+			var request = URLRequest(url: url)
+			let keyQueryItem = URLQueryItem(name: "appid", value: try?  self.apiKey.value())
+			let unitsQueryItem = URLQueryItem(name: "units", value: "metric")
+			let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)!
 
-		if method == "GET" {
-			var queryItems = params.map { URLQueryItem(name: $0.0, value: $0.1) }
-			queryItems.append(keyQueryItem)
-			queryItems.append(unitsQueryItem)
-			urlComponents.queryItems = queryItems
-		} else {
-			urlComponents.queryItems = [keyQueryItem, unitsQueryItem]
+			if method == "GET" {
+				var queryItems = params.map { URLQueryItem(name: $0.0, value: $0.1) }
+				queryItems.append(keyQueryItem)
+				queryItems.append(unitsQueryItem)
+				urlComponents.queryItems = queryItems
+			} else {
+				urlComponents.queryItems = [keyQueryItem, unitsQueryItem]
 
-			let jsonData = try! JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-			request.httpBody = jsonData
+				let jsonData = try! JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+				request.httpBody = jsonData
+			}
+
+			request.url = urlComponents.url!
+			request.httpMethod = method
+
+			request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+			
+			observer.onNext(request)
+			observer.onCompleted()
+			
+			return Disposables.create()
 		}
-
-		request.url = urlComponents.url!
-		request.httpMethod = method
-
-		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
 		let session = URLSession.shared
 
-		return session.rx.data(request: request)
+		return request.flatMap { request in
+			return session.rx.data(request: request)
+		}
 	}
 
 }
