@@ -76,13 +76,19 @@ class ApiController {
 			let lon: CLLocationDegrees
 		}
 	}
+	
+	enum ApiError: Error {
+		case cityNotFound
+		case serverFailure
+		case invalidKey
+	}
 
 	/// The shared instance
 	static var shared = ApiController()
 
 	/// The api key to communicate with openweathermap.org
 	/// Create you own on https://home.openweathermap.org/users/sign_up
-	let apiKey = BehaviorSubject(value: APIKEY_OPENWEATHERAPI)
+	let apiKey = BehaviorSubject(value: "APIKEY_OPENWEATHERAPI")
 
 	/// API base URL
 	let baseURL = URL(string: "https://api.openweathermap.org/data/2.5")!
@@ -152,7 +158,19 @@ class ApiController {
 		let session = URLSession.shared
 
 		return request.flatMap { request in
-			return session.rx.data(request: request)
+			return session.rx.response(request: request)
+				.map { response, data in
+					switch response.statusCode {
+					case 200 ..< 300:
+						return data
+					case 401:
+						throw ApiError.invalidKey
+					case 400 ..< 500:
+						throw ApiError.cityNotFound
+					default:
+						throw ApiError.serverFailure
+					}
+				}
 		}
 	}
 

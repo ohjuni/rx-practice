@@ -11,6 +11,8 @@ import RxCocoa
 import MapKit
 import CoreLocation
 
+typealias Weather = ApiController.Weather
+
 class WunderViewController: UIViewController {
 	@IBOutlet private var mapView: MKMapView!
 	@IBOutlet private var mapButton: UIButton!
@@ -27,6 +29,8 @@ class WunderViewController: UIViewController {
 	private let bag = DisposeBag()
 	
 	var keyTextField: UITextField?
+	
+	private var cache = [String: Weather]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -75,10 +79,39 @@ class WunderViewController: UIViewController {
 				.catchAndReturn(.empty)
 		}
 		
+		let maxAttempts: Int = 2
+		
+		let retryHandler: (Observable<Error>) -> Observable<Int> = { e in
+			return e.enumerated().flatMap { attempt, error -> Observable<Int> in
+				return e.enumerated().flatMap { attempt, error -> Observable<Int> in
+					if attempt >= maxAttempts - 1 {
+						return Observable.error(error)
+					}
+					print("== retrying after \(attempt + 1) seconds ==")
+					
+					return Observable<Int>.timer(.seconds(attempt + 1), scheduler: MainScheduler.instance)
+						.take(1)
+				}
+			}
+		}
+		
 		let textSearch = searchInput.flatMap { city in
 			ApiController.shared
 				.currentWeather(for: city)
-				.catchAndReturn(.empty)
+				.do(
+					onNext: { [weak self] data in
+					self?.cache[city] = data
+				},
+					onError: { error in
+						DispatchQueue.main.async { [weak self] in
+							guard let self = self else { return }
+							self.showError(error: error)
+						}
+				})
+				.retry(when: retryHandler)
+				.catch({ [weak self] error in
+					Observable.just(self?.cache[city] ?? .empty)
+				})
 		}
 		
 		let search = Observable
@@ -128,6 +161,8 @@ class WunderViewController: UIViewController {
 			.map { $0.overlay() }
 			.drive(mapView.rx.overlay)
 			.disposed(by: bag)
+		
+		_ = RxReachability.shared.startMonitor("openweathermap.org")
 	}
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -167,6 +202,22 @@ class WunderViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive))
 
 		self.present(alert, animated: true)
+	}
+	
+	private func showError(error e: Error) {
+		guard let e = e as? ApiController.ApiError else {
+			InfoView.showIn(viewController: self, message: "An error occurred")
+			return
+		}
+		
+		switch e {
+		case .cityNotFound:
+			InfoView.showIn(viewController: self, message: "City Name is invalid")
+		case .serverFailure:
+			InfoView.showIn(viewController: self, message: "Server error")
+		case .invalidKey:
+			InfoView.showIn(viewController: self, message: "Key is invalid")
+		}
 	}
 
 	// MARK: - Style
