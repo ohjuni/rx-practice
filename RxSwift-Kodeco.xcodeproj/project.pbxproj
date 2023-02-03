@@ -129,6 +129,7 @@
 		C7D592862967E4E3002C1868 /* RxSwift_KodecoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift_KodecoUITests.swift; sourceTree = "<group>"; };
 		C7D592882967E4E3002C1868 /* RxSwift_KodecoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift_KodecoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C7D592952967E52A002C1868 /* PG_Subject+FilteringOP.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "PG_Subject+FilteringOP.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C7DB6B69298B9EA0002746DE /* PG_Schedulers.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = PG_Schedulers.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +315,7 @@
 				C7D592952967E52A002C1868 /* PG_Subject+FilteringOP.playground */,
 				C73AAD18296FD58E00C5AA05 /* PG_Operators.playground */,
 				C7899437297A35A300AB9925 /* PG_TimeBasedOperators.playground */,
+				C7DB6B69298B9EA0002746DE /* PG_Schedulers.playground */,
 				C7D592642967E4E2002C1868 /* RxSwift-Kodeco */,
 				C7D5927B2967E4E3002C1868 /* RxSwift-KodecoTests */,
 				C7D592852967E4E3002C1868 /* RxSwift-KodecoUITests */,
